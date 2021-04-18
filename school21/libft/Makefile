@@ -16,7 +16,7 @@ CC = gcc
 
 GCCFLAG = -Wall -Wextra -Werror
 
-SRC = ft_strlen.c ft_atoi.c ft_bzero.c ft_memset.c
+SRC = ft_strlen.c ft_atoi.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memset.c ft_memmove.c
 
 HEAD = libft.h
 

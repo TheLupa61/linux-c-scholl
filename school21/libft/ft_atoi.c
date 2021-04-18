@@ -12,18 +12,13 @@
 
 #include "libft.h"
 
-int	ft_atoi(char *str)
+int	ft_atoi(const char *str)
 {
 	int	i;
 	int	num;
 
 	i = 0;
 	num = 1;
-
-	if (!(*str))
-	{
-		return (0);
-	}
 	while ((*str >= 9 && *str <= 13) || *str == 32)
 		str++;
 	while (*str == '+' || *str == '-')

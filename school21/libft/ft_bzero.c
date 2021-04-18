@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccorrin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/16 12:44:22 by ccorrin           #+#    #+#             */
-/*   Updated: 2021/04/16 12:50:35 by ccorrin          ###   ########.fr       */
+/*   Created: 2021/04/18 05:54:59 by ccorrin           #+#    #+#             */
+/*   Updated: 2021/04/18 06:00:06 by ccorrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t length)
+void	ft_bzero(void *s, size_t n)
 {
-    unsigned char	*c;
-    size_t		i;
+	unsigned char	*c;
+	size_t			i;
 
-    i = 0;
-    c = (unsigned char *)s;
-    while (length--)
-    {
-        c[i++] = 0;
-    }
+	i = 0;
+	c = (unsigned char *)s;
+	while (n--)
+	{
+		c[i++] = 0;
+	}
 }
