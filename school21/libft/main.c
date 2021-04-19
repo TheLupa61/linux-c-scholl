@@ -1,20 +1,45 @@
-#include "libft.h"
+#include <string.h>
+#include <stdlib.h>
 #include <stdio.h>
-#include <string.h>   //Для memchr
 
-int main (void)
+char    *ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-   // Исходный массив данных
-   unsigned char src[10]="1234567890";
+    size_t  i;
+    size_t  j;
+    unsigned char *c1;
+    unsigned char *c2;
 
-   // Вывод массива src на консоль
-   printf ("src old: %s\n",src);
+    c1 = (unsigned char *)haystack;
+    c2 = (unsigned char *)needle;
+    if (c2[0] == '\0')
+        return (c1);
+    j = 0;
+    while (j < len && c1[j])
+    {
+        i = 0;
+        while (j < len && c2[i] && c1[j] && c2[i] == c1[j])
+        {
+            ++i;
+            ++j;
+        }
+        if (c2[i] == '\0')
+            return (&c1[j - i]);
+        j = j - i + 1;
+    }
+    return (0);
+}
 
-   // Копируем 3 байт
-   ft_memmove (&src[4], &src[3], 3);
+int main()
+{
 
-   // Вывод массива src на консоль
-   printf ("src new: %s\n",src);
+    char    *s1 = "MZIRIBMZERIBMZE123";
+    char    *s2 = "MZIRIBMZE";
+    size_t  max = strlen(s2);
 
-   return 0;
+    char    *i1 = strnstr(s1, s2, max);
+    char    *i2 = ft_strnstr(s1, s2, max);
+
+
+    printf("strnstr: %s\nft_strnstr: %s\n", i1,i2);
+    return 0;
 }
