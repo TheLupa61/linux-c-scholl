@@ -17,10 +17,10 @@ static unsigned int	ft_isset(char c, char const *set)
 	while (*set)
 	{
 		if (c == *set)
-			return (1);
+			return (0);
 		set++;
 	}
-	return (0);
+	return (1);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
@@ -29,15 +29,15 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t			end;
 	char			*str;
 
-	start = 0;
-	end = ft_strlen(s1);
 	if (!s1)
 		return (NULL);
 	if (!set)
 		return (ft_strdup(s1));
+	start = 0;
+	end = ft_strlen(s1);
 	while (ft_isset(s1[start], set) == 0)
 		start++;
-	if (start == ft_strlen(s1))
+	if (start == end)
 	{
 		str = ft_strdup("");
 		if (!str)

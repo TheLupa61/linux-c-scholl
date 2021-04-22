@@ -16,7 +16,11 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	size_t	src_len;
 
+	if (!dst || !src)
+		return (0);
 	src_len = ft_strlen(src);
+	if (!dstsize)
+		return (src_len);
 	if (src_len < dstsize)
 	{
 		ft_memmove(dst, src, src_len + 1);

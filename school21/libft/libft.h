@@ -6,7 +6,7 @@
 /*   By: ccorrin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 14:58:10 by ccorrin           #+#    #+#             */
-/*   Updated: 2021/04/19 16:34:01 by ccorrin          ###   ########.fr       */
+/*   Updated: 2021/04/22 14:23:47 by ccorrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void	ft_bzero(void *s, size_t n);
@@ -34,19 +33,18 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 
 int		ft_atoi(const char *str);
 
-int     ft_isalpha(int c);
-int     ft_isdigit(int c);
-int     ft_isascii(int c);
-int     ft_isprint(int c);
-int     ft_toupper(int c);
-int     ft_tolower(int c);
-int     ft_isalnum(int c);
+int		ft_isalpha(int c);
+int		ft_isdigit(int c);
+int		ft_isascii(int c);
+int		ft_isprint(int c);
+int		ft_toupper(int c);
+int		ft_tolower(int c);
+int		ft_isalnum(int c);
 
-char *ft_substr(char const *s, unsigned int start, size_t len);
-char *ft_strjoin(char const *s1, char const *s2);
-char *ft_strtrim(char const *s1, char const *set);
-void *ft_calloc(size_t nmemb, size_t size);
-char *ft_strdup(const char *str);
-
-//char **ft_split(char const *s, char c);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strtrim(char const *s1, char const *set);
+void	*ft_calloc(size_t nmemb, size_t size);
+char	*ft_strdup(const char *str);
+char	**ft_split(char const *s, char c);
 #endif

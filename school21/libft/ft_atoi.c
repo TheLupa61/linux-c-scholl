@@ -6,7 +6,7 @@
 /*   By: ccorrin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 12:44:22 by ccorrin           #+#    #+#             */
-/*   Updated: 2021/04/16 12:50:35 by ccorrin          ###   ########.fr       */
+/*   Updated: 2021/04/22 14:01:13 by ccorrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_atoi(const char *str)
 {
-	int	i;
+	int				i;
 	unsigned int	num;
 
 	i = 0;
