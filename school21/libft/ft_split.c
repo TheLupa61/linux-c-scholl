@@ -1,4 +1,5 @@
 #include "libft.h"
+#include <stdio.h>
 
 static int  ft_nb_s(const char *s, char c)
 {
@@ -67,4 +68,30 @@ char **ft_split(char const *s, char c)
     }
     new_s[i] = NULL;
     return (new_s);
+}
+
+int main (void)
+{    
+   // Массив со строкой для поиска
+   char str [24]="test1/test2/test3/test4";
+   // Набор символов, которые должны входить в искомый сегмент
+   // Переменная, в которую будут заноситься начальные адреса частей
+   // строки str
+   char **istr;
+
+   printf ("Исходная строка: %s\n", str);
+   printf ("Результат разбиения:\n");
+   // Выделение первой части строки
+   istr = ft_split (str, '/');
+
+   // Выделение последующих частей
+   while (istr != NULL)
+   {
+      // Вывод очередной выделенной части
+      printf ("%s\n",*istr);
+      // Выделение очередной части строки
+      istr = ft_split(NULL, '/');
+   }
+
+   return 0;
 }
