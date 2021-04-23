@@ -22,11 +22,15 @@ ft_memcpy.c ft_memmove.c ft_memset.c ft_strchr.c ft_strdup.c ft_strlcat.c \
 ft_strlcpy.c ft_strlen.c ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_substr.c \
 ft_tolower.c ft_toupper.c ft_strjoin.c ft_strtrim.c ft_split.c
 
+SRC_B = 
+
 HEAD = libft.h
 
 OBJ = $(SRC:.c=.o)
 
-LBAR = ar rc
+OBJ_B = $(SRC_B:.c=.o)
+
+LBAR = ar rcs
 
 LBRAN = ranlib
 
@@ -39,12 +43,16 @@ $(NAME):	$(OBJ)
 	$(LBAR) $(NAME) $(HEAD) $(OBJ)
 	$(LBRAN) $(NAME)
 
+bonus: $(NAME) $(OBJ_B)
+	$(LBAR) $(NAME) $(HEAD) $(OBJ_B)
+	$(LBRAN) $(NAME)
+
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJ) $(OBJ_B)
 
 fclean:	clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(bonus)
 
 re:	fclean all
 
-.PONY: all clean fclean re
+.PONY: all bonus clean fclean re

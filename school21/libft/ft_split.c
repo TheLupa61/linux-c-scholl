@@ -47,6 +47,8 @@ char **ft_split(char const *s, char c)
     char **new_s;
     size_t i;
 
+    if (!s)
+        return (NULL);
     new_s = (char **)malloc(sizeof(char *) * (ft_nb_s(s, c) + 1));
     if (new_s == NULL)
         return (NULL);
