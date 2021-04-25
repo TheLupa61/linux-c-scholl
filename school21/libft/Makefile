@@ -26,8 +26,6 @@ ft_strmapi.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
 SRC_B = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c \
 ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 
-HEAD = libft.h
-
 OBJ = $(SRC:.c=.o)
 
 OBJ_B = $(SRC_B:.c=.o)
@@ -42,11 +40,11 @@ all:	$(NAME)
 	$(CC) $(GCCFLAG) -c $< -o ${<:.c=.o}
 
 $(NAME):	$(OBJ)
-	$(LBAR) $(NAME) $(HEAD) $(OBJ)
+	$(LBAR) $(NAME) $(OBJ)
 	$(LBRAN) $(NAME)
 
 bonus: $(NAME) $(OBJ) $(OBJ_B)
-	$(LBAR) $(NAME) $(HEAD) $(OBJ) $(OBJ_B)
+	$(LBAR) $(NAME) $(OBJ) $(OBJ_B)
 	$(LBRAN) $(NAME)
 
 clean:
