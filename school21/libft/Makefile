@@ -34,10 +34,12 @@ LBAR = ar rcs
 
 LBRAN = ranlib
 
+HEAD = .
+
 all:	$(NAME)
 
 .c.o:	
-	$(CC) $(GCCFLAG) -c $< -o ${<:.c=.o}
+	$(CC) $(GCCFLAG) -I$(HEAD) -c $< -o ${<:.c=.o}
 
 $(NAME):	$(OBJ)
 	$(LBAR) $(NAME) $(OBJ)
