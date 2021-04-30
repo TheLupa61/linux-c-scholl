@@ -74,7 +74,12 @@ char	**ft_split(char const *s, char c)
 		{
 			new_s[i] = ft_next_c(&s, c);
 			if (new_s[i] == NULL)
-				return (ft_error(new_s, i));
+            {
+				while (i--)
+		            free(new_s[i]);
+	            free(new_s);
+	                return (NULL);
+            }
 			i++;
 		}
 	}
