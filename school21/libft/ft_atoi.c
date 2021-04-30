@@ -34,3 +34,10 @@ int	ft_atoi(const char *str)
 	}
 	return ((int)(i * num));
 }
+
+int main()
+{
+    char a[20] = "sada";
+    printf("%d\n", ft_atoi(a));
+    printf("%d\n", atoi(a));
+}

@@ -28,3 +28,19 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	else
 		return (c1[i] - c2[i]);
 }
+
+#include <string.h>
+int		main(void)
+{
+	char	src[100] = "aa";
+	char	dst[100] = "a1";
+	char	src_ft[100] = "aa";
+	char	dst_ft[100] = "a1";
+    printf("%s\n", dst);
+    printf("%d\n", ft_memcmp(dst, src, 3));
+    printf("%s\n", dst);
+    printf("%s\n", dst_ft);
+    printf("%d\n", memcmp(dst_ft, src_ft, 3));
+    printf("%s\n", dst_ft);
+	return (0);
+}

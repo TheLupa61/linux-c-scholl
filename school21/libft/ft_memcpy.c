@@ -18,15 +18,24 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	unsigned char	*s;
 	size_t			i;
 
-	i = 0;
+	i = -1;
 	d = (unsigned char *)dst;
 	s = (unsigned char *)src;
 	if (dst == src)
 		return (dst);
-	while (i < n)
-	{
+	while (++i < n)
 		d[i] = s[i];
-		i++;
-	}
 	return (d);
+}
+
+#include <string.h>
+int		main(void)
+{
+	char str[20] = "hello";
+    char str2[20] = "hello";
+    ft_memcpy(str + 3, str, 19);
+    printf("%s\n", str);
+    ft_memmove(str2 + 3, str2, 17);
+    printf("%s\n", str2);
+	return (0);
 }

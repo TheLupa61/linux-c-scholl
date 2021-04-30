@@ -35,3 +35,20 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	}
 	return (d);
 }
+
+#include <string.h>
+int		main(void)
+{
+	char	src[100] = "tfasfasfs";
+	char	dst[100] = "aaaaaaaaaaaaa";
+	char	src_ft[100] = "test1 test2 testC";
+	char	dst_ft[100] = "aaaaaaaaaaaaa";
+    printf("%s\n", dst);
+    printf("%s\n", (char *)ft_memmove(dst, src, 5));
+    printf("%s\n", dst);
+    printf("%ld\n", strlen(src));
+    printf("%s\n", dst_ft);
+    printf("%s\n", (char *)memmove(dst_ft, src_ft, 12));
+    printf("%s\n", dst_ft);
+	return (0);
+}

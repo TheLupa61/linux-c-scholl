@@ -12,7 +12,7 @@
 
 NAME = libft.a
 
-CC = gcc
+CC = clang
 
 GCCFLAG = -Wall -Wextra -Werror
 
@@ -23,36 +23,29 @@ ft_strlcpy.c ft_strlen.c ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_substr.c \
 ft_tolower.c ft_toupper.c ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c \
 ft_strmapi.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
 
-SRC_B = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c \
-ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
-
 OBJ = $(SRC:.c=.o)
-
-OBJ_B = $(SRC_B:.c=.o)
 
 LBAR = ar rcs
 
 LBRAN = ranlib
 
+HEAD = libft.h
+
 all:	$(NAME)
 
 .c.o:	
-	$(CC) $(GCCFLAG) -c $< -o ${<:.c=.o}
+	$(CC) $(GCCFLAG) -I $(HEAD) -c $< -o ${<:.c=.o} 
 
-$(NAME):	$(OBJ)
+$(NAME):	$(OBJ) $(HEAD)
 	$(LBAR) $(NAME) $(OBJ)
 	$(LBRAN) $(NAME)
 
-bonus: $(NAME) $(OBJ) $(OBJ_B)
-	$(LBAR) $(NAME) $(OBJ) $(OBJ_B)
-	$(LBRAN) $(NAME)
-
 clean:
-	rm -f $(OBJ) $(OBJ_B)
+	rm -f $(OBJ)
 
 fclean:	clean
 	rm -f $(NAME)
 
 re:	fclean all
 
-.PONY: all clean fclean re bonus
+.PONY: all clean fclean re
