@@ -27,19 +27,3 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	}
 	return (NULL);
 }
-
-#include <string.h>
-int		main(void)
-{
-	char	src[100] = "test1 test2 testC";
-	char	dst[100] = "aaaaaaaaaaaaa";
-	char	src_ft[100] = "test1 test2 testC";
-	char	dst_ft[100] = "aaaaaaaaaaaaa";
-    printf("%s\n", src);
-    printf("%s\n", (char *)ft_memchr(src, '2', 11));
-    printf("%s\n", src);
-    printf("%s\n", src_ft);
-    printf("%s\n", (char *)memchr(src_ft, '2', 20));
-    printf("%s\n", src_ft);
-	return (0);
-}
