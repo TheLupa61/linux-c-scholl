@@ -7,11 +7,8 @@ char	*ft_strchr(const char *s, int c)
 
 	i = 0;
 	sep = c;
-	while (s[i])
-	{
-		if (s[i] == sep)
-			return (s + i);
-		i++;
-	}
-	return (NULL);
+	while (s[i] != sep)
+		if (!s[i++])
+			return (NULL);
+	return ((char *)s + i);
 }
