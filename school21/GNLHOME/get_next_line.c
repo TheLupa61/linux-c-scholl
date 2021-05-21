@@ -1,6 +1,6 @@
 #include "get_next_line.h"
 
-char	*next_line_from_storage(char *storage)
+static char	*next_line_from_storage(char *storage)
 {
 	int		i;
 	char	*tmp;
@@ -23,7 +23,7 @@ char	*next_line_from_storage(char *storage)
 	return (tmp);
 }
 
-char	*remove_line_from_storage(char *storage)
+static char	*remove_line_from_storage(char *storage)
 {
 	char	*tmp;
 	int		i;
@@ -51,7 +51,7 @@ char	*remove_line_from_storage(char *storage)
 	return (tmp);
 }
 
-int	error(char *buffer)
+static int	error(char *buffer)
 {
 	free(buffer);
 	return (-1);
