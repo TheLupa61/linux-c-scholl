@@ -1,29 +1,29 @@
 #include "get_next_line.h"
 
-static char	*next_line_from_storage(char *storage)
+static char	*check_start_remainder(char *remainder)
 {
 	int		i;
 	char	*tmp;
 
-	if (!storage)
+	if (!remainder)
 		return (0);
 	i = 0;
-	while (storage[i] && storage[i] != '\n')
+	while (remainder[i] && remainder[i] != '\n')
 		i++;
 	tmp = malloc(sizeof(char) * (i + 1));
 	if (!tmp)
 		return (0);
 	i = 0;
-	while (storage[i] && storage[i] != '\n')
+	while (remainder[i] && remainder[i] != '\n')
 	{
-		tmp[i] = storage[i];
+		tmp[i] = remainder[i];
 		i++;
 	}
 	tmp[i] = '\0';
 	return (tmp);
 }
 
-static char	*remove_line_from_storage(char *storage)
+static char	*check_end_remainder(char *remainder)
 {
 	char	*tmp;
 	int		i;
@@ -31,27 +31,27 @@ static char	*remove_line_from_storage(char *storage)
 
 	i = 0;
 	j = 0;
-	if (!storage)
+	if (!remainder)
 		return (0);
-	while (storage[i] && storage[i] != '\n')
+	while (remainder[i] && remainder[i] != '\n')
 		i++;
-	if (!storage[i])
+	if (!remainder[i])
 	{
-		free(storage);
+		free(remainder);
 		return (0);
 	}
-	tmp = malloc(sizeof(char) * ((ft_strlen(storage) - i) + 1));
+	tmp = malloc(sizeof(char) * ((ft_strlen(remainder) - i) + 1));
 	if (!tmp)
 		return (0);
 	i++;
-	while (storage[i])
-		tmp[j++] = storage[i++];
+	while (remainder[i])
+		tmp[j++] = remainder[i++];
 	tmp[j] = '\0';
-	free(storage);
+	free(remainder);
 	return (tmp);
 }
 
-static int	error(char *buffer)
+static int	ft_error(char *buffer)
 {
 	free(buffer);
 	return (-1);
@@ -59,25 +59,25 @@ static int	error(char *buffer)
 
 int	get_next_line(int fd, char **line)
 {
-	char			*buffer;
-	static char		*storage;
-	int				bytes_was_read;
+	char		*buffer;
+	static char	*remainder;
+	int			bytes_was_read;
 
 	bytes_was_read = 1;
 	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (fd < 0 || fd > 1024 || !line || BUFFER_SIZE <= 0 || !buffer)
-		return (error(buffer));
-	while (!ft_strchr(storage, '\n') && bytes_was_read != 0)
+		return (ft_error(buffer));
+	while (!ft_strchr(remainder, '\n') && bytes_was_read != 0)
 	{
 		bytes_was_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_was_read < 0)
-			return (error(buffer));
+			return (ft_error(buffer));
 		buffer[bytes_was_read] = '\0';
-		storage = ft_strjoin(storage, buffer);
+		remainder = ft_strjoin(remainder, buffer);
 	}
 	free(buffer);
-	*line = next_line_from_storage(storage);
-	storage = remove_line_from_storage(storage);
+	*line = check_start_remainder(remainder);
+	remainder = check_end_remainder(remainder);
 	if (!bytes_was_read)
 		return (0);
 	return (1);
