@@ -5,6 +5,13 @@
 # include <unistd.h>
 # include <fcntl.h>
 
+typedef struct get_next_line
+{
+	int  fd;
+	char *remainder;
+	struct get_next_line *next;
+}			GNL;
+
 int		get_next_line(int fd, char **line);
 
 char	*ft_strchr(const char *s, int c);
