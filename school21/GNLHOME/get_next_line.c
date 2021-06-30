@@ -82,3 +82,43 @@ int	get_next_line(int fd, char **line)
 		return (0);
 	return (1);
 }
+
+#include <stdio.h>
+
+typedef struct get_line
+{
+    int num;
+    char *line;
+    struct get_line *next;
+} GNL;
+
+int main()
+{
+    char *line;
+    int  fd;
+    GNL *head;
+    GNL *tmp;
+    int num;
+
+    fd = open("text2.txt", O_RDONLY);
+    num = 0;
+    head = (GNL *)malloc(sizeof(GNL));
+    tmp = head;
+    while (get_next_line(fd, &line))
+    {
+        tmp->next = (GNL *)malloc(sizeof(GNL));
+        tmp->num = num;
+        tmp->line = line;
+        if (num == 0)
+            head = tmp;
+        num++;
+        tmp = tmp->next;
+    }
+    tmp->next = NULL;
+
+    while (head->next)
+    {
+        printf("%s\n", head->line);
+        head = head->next;
+    }
+}
