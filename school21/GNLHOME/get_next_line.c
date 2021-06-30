@@ -57,10 +57,9 @@ static int	ft_error(char *buffer)
 	return (-1);
 }
 
-int	get_next_line(int fd, char **line)
+int	get_next(int fd, char **line, *remainder)
 {
 	char		*buffer;
-	static char	*remainder;
 	int			bytes_was_read;
 
 	bytes_was_read = 1;
@@ -83,6 +82,7 @@ int	get_next_line(int fd, char **line)
 	return (1);
 }
 
+<<<<<<< HEAD
 #include <stdio.h>
 
 typedef struct get_line
@@ -121,4 +121,26 @@ int main()
         printf("%s\n", head->line);
         head = head->next;
     }
+=======
+GNL		*new_linked_line(int fd)
+{
+	GNL *new;
+
+	new = (GNL *)malloc(sizeof(GNL));
+	new->fd = fd;
+	new->next = NULL;
+	return (new);
+}
+
+int 	get_next_line(int fd, char **line)
+{
+	static GNL	*head;
+	GNL			*tmp;
+
+	if (head == NULL)
+		head = new_linked_line(fd);
+	while (tmp->remainder)
+	get_next(head->fd, line, head->remainder);
+
+>>>>>>> 26c598c95183c041c553513c2dea8ed8c3c64844
 }

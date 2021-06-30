@@ -4,6 +4,13 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+typedef struct get_next_line
+{
+	int fd;
+	char *remainder;
+	struct get_next_line *next;
+}			GNL;
+
 int get_next_line(int fd, char **line);
 
 void	*ft_calloc(size_t nmemb, size_t size);
